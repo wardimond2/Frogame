@@ -21,6 +21,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
                     System.out.println("Your class is " + heroClass);
+                    Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -30,6 +31,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
                     System.out.println("Your class is " + heroClass);
+                    Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -47,7 +49,7 @@ public class Main {
                 System.out.println("\nHunter Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Hunter? (y/n):");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Hunter";
-                    Hero.Class = "Hunter";
+                    //heroClass = "Hunter";
                     System.out.println("Your class is " + heroClass);
                     break;
                 }
