@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
-        Monster snakes = new Monster("snake", 10, 10, 10,);
+        // defining all enemies
+        Monster snakes = new Monster("snake", 10, 10, 10);
         Monster tiger = new Monster("tiger", 10, 10, 10);
         Monster buffafalo = new Monster("buffalo", 10,10,10);
         Monster elephant = new Monster("elephant", 10, 10, 10);
@@ -12,7 +13,14 @@ public class Main {
         Monster ents = new Monster("ent", 10, 10, 10);
         Monster crocodile = new Monster("crocodile", 10,10,10);
         Monster panther = new Monster("panther", 10,10,10);
-        Monster 
+        Monster gorrila = new Monster("gorrila",10,10,10);
+        Monster slimes = new Monster("slimes",10,10,10);
+        Monster rats = new Monster("rats",10,10,10);
+        Monster bats = new Monster("bats",10,10,10);
+        Monster ants = new Monster("ants",10,10,10);
+        Monster cats = new Monster("cats",10,10,10);
+
+        // defing area's
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
@@ -78,9 +86,9 @@ public class Main {
         }
 
     }
-    public static Items Battle(Monster enemy, Hero player){
+    public static void Battle(Monster enemy, Hero player){// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
-            Scanner action = new Scanner;
+            Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
             switch(Caction){
                 case "inventory":
