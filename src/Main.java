@@ -1,8 +1,18 @@
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
+        Monster snakes = new Monster("snake", 10, 10, 10,);
+        Monster tiger = new Monster("tiger", 10, 10, 10);
+        Monster buffafalo = new Monster("buffalo", 10,10,10);
+        Monster elephant = new Monster("elephant", 10, 10, 10);
+        Monster chicken = new Monster("chicken", 10, 10, 10);
+        Monster ents = new Monster("ent", 10, 10, 10);
+        Monster crocodile = new Monster("crocodile", 10,10,10);
+        Monster panther = new Monster("panther", 10,10,10);
+        Monster 
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
@@ -41,6 +51,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Wizard";
                     System.out.println("Your class is " + heroClass);
+                    Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -51,6 +62,7 @@ public class Main {
                     heroClass = "Hunter";
                     //heroClass = "Hunter";
                     System.out.println("Your class is " + heroClass);
+                    Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -59,10 +71,47 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Bard";
                     System.out.println("Your class is " + heroClass);
+                    Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
         }
 
     }
+    public static Items Battle(Monster enemy, Hero player){
+        while(enemy.health >= 0 && player.health >= 0){
+            Scanner action = new Scanner;
+            String Caction = action.nextLine();
+            switch(Caction){
+                case "inventory":
+                    for( Items i: player.inventory){
+                        System.out.println(i.Iname);
+
+                    }
+                case "attack":
+                    enemy.takeDamage(player.hero_attack());
+
+            }
+            player.takeDamage(enemy.eAttack());
+            System.out.println("your hero has "+player.health+" hp left.");
+            if(enemy.health <= 0){
+                System.out.println("you've defeated the enemy");
+            }
+            if(player.health <= 0){
+                System.out.println("you've failed your mission");
+            }
+
+        }
+    }
+    public static Monster rdmonster(Monster[] monsters, char difficulty, int level) {
+        int encounter = 0;
+        Random generator = new Random();
+        encounter = generator.nextInt(monsters.length);
+        Monster enemy = monsters[encounter];
+        System.out.println("you've encountered a " + enemy.name + " how will you respond");
+        return enemy;
+    }
 }
+
+
+
