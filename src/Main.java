@@ -8,7 +8,7 @@ public class Main {
         Monster snakes = new Monster("snake", 10, 10, 10);
         Monster tiger = new Monster("tiger", 10, 10, 10);
         Monster buffafalo = new Monster("buffalo", 10,10,10);
-        Monster elephant = new Monster("elephant", 10, 10, 10);
+        Monster elefalant = new Monster("elephant", 10, 10, 10);
         Monster chicken = new Monster("chicken", 10, 10, 10);
         Monster ents = new Monster("ent", 10, 10, 10);
         Monster crocodile = new Monster("crocodile", 10,10,10);
@@ -19,7 +19,7 @@ public class Main {
         Monster bats = new Monster("bats",10,10,10);
         Monster ants = new Monster("ants",10,10,10);
         Monster cats = new Monster("cats",10,10,10);
-
+        Monster[] safai ={tiger, buffafalo, elefalant, chicken};
         // defing area's
         Scanner playerInput = new Scanner(System.in);
         String heroName;
@@ -84,7 +84,7 @@ public class Main {
                 }
             }
         }
-
+    Battle(rdmonster(safari, "m", 1));
     }
     public static void Battle(Monster enemy, Hero player){// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
