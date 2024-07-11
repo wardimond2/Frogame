@@ -76,4 +76,14 @@ public class Hero {
         }
         }
     }
+    public void classChange(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance){
+        this.name = name;
+        this.attack = attack;
+        this.health = health;
+        this.defense = defense;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.constitution = constitution;
+        this.intelligence = intelligance;
+    }
 }
