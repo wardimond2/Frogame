@@ -158,11 +158,12 @@ public class Main {
             player.takeDamage(enemy.eAttack());
             System.out.println("your hero has "+player.health+" hp left.");
             if(enemy.health <= 0){
-                System.out.println("you've defeated the enemy");
+                System.out.println("You have defeated "+enemy.name+"!");
+
                 break;
             }
             if(player.health <= 0){
-                System.out.println("you've failed your mission");
+                System.out.println("You have fallen to "+enemy.name+"...");
                 break;
             }
 

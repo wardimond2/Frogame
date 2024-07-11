@@ -8,7 +8,7 @@ public class Monster {
     static Items[] crocodileL = {Items.Rock, Items.Stick, Items.pFrog, Items.Fang};
     static Items[] pantherL = {Items.iSword, Items.Rock, Items.Fang};
     static Items[] gorrilaL = {Items.iSword, Items.Rock};
-    static Items[] slimesL = {Items.iSword, Items.Rock};
+    static Items[] slimesL = {Items.iSword, Items.Rock, Items.pFrog};
     static Items[] ratsL = {Items.iSword, Items.Rock};
     static Items[] batsL = {Items.iSword, Items.Rock};
     static Items[] antsL = {Items.iSword, Items.Rock};
