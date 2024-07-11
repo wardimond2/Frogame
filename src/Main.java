@@ -49,7 +49,7 @@ public class Main {
                 SlowText.run("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
-                    SlowText.run("Your class is " + heroClass+"\n");
+                    System.out.println("Your class is " + heroClass);
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
@@ -59,7 +59,7 @@ public class Main {
                 SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
-                    SlowText.run("Your class is " + heroClass+"\n");
+                    SlowText.run("Your class is " + heroClass);
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
@@ -97,9 +97,10 @@ public class Main {
         }
 
         // game start true game
+        P1.grabItem();
     Battle(rdmonster(safari, 'm', 1), P1);
     }
-    public static void Battle(Monster enemy, Hero player){// change void later to Items i dont wanna code loot tables
+    public static void Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
             Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
@@ -111,6 +112,7 @@ public class Main {
                     }
                 case "attack":
                     enemy.takeDamage(player.hero_attack());
+                    SlowText.run(enemy.name+" has "+Integer.toString(enemy.health)+" hp ");
 
             }
             player.takeDamage(enemy.eAttack());
@@ -123,6 +125,7 @@ public class Main {
             }
 
         }
+        System.out.println(enemy.health);
     }
     public static Monster rdmonster(Monster[] monsters, char difficulty, int level) {
         int encounter = 0;
