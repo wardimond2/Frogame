@@ -11,7 +11,7 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
-        String[] npcDialouge = {"help us hero"};
+        String[] npcDialouge = {"help us hero", "save us from (insert big bad enemy here)", "quickly hero power up to save us all", "IM DIEING SAVE ME"};
         double heroHealth;
         int heroAC;
         int heroArcana;
