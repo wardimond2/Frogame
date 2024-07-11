@@ -11,7 +11,7 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
-        String[] npcDialouge = {"help us hero", "save us from (insert big bad enemy here)", "quickly hero power up to save us all", "IM DIEING SAVE ME"};
+        String[] npcDialouge = {"help us hero ", "save us from (insert big bad enemy here) ", "quickly hero power up to save us all ", "IM DIEING SAVE ME "};
         double heroHealth;
         int heroAC;
         int heroArcana;
@@ -84,14 +84,20 @@ public class Main {
         // GAME fOR REAL THIS TIME
         while(run == true){
             playerInput.nextLine();
+            System.out.println("walk, battle, talk");
             String menue = playerInput.nextLine();
             switch(menue){
                 case "walk":
                     place = walking();
+                    break;
                 case "battle":
                     Battle(rdmonster(place, 'm', 1), P1);
+                    break;
                 case"talk":
-
+                    Random rander = new Random();
+                    int louge = rander.nextInt(3);
+                    SlowText.run(npcDialouge[louge]);
+                    break;
             }
             place = walking();
         }
@@ -101,22 +107,28 @@ public class Main {
         Scanner walk = new Scanner(System.in);
         String area = "";
         SlowText.run("where would you like to go\n");
+        System.out.print("");
         area = walk.nextLine();
-        Monster[] place = {Monster.snakes};
+        Monster[] place = Monster.swamp;
         switch (area){
             case "savanna":
                 place = Monster.swamp;
+                System.out.println("youve reached the swamp");
                 break;
             case "forest":
+                System.out.println("youve reached the forest");
                 place = Monster.Forest;
                 break;
             case "jungle":
                 place = Monster.jungle;
+                System.out.println("youve reached the jungle");
                 break;
             case "castle":
+                System.out.println("you've reached the castle");
                 place = Monster.castle;
                 break;
             case "cave":
+                System.out.println("you've reached the cave");
                 place = Monster.Cave;
                 break;
 
@@ -133,9 +145,11 @@ public class Main {
                         System.out.println(i.Iname);
 
                     }
+                    break;
                 case "attack":
                     enemy.takeDamage(player.hero_attack());
                     SlowText.run(enemy.name+" has "+Integer.toString(enemy.health)+" hp ");
+                    break;
 
             }
             player.takeDamage(enemy.eAttack());
