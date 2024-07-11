@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws InterruptedException{
         // defining loot tables
         Items[] Snakel = {Items.iSword};
         // defining all enemies and they're stats
@@ -100,7 +100,7 @@ public class Main {
         P1.grabItem();
     Battle(rdmonster(safari, 'm', 1), P1);
     }
-    public static void Battle(Monster enemy, Hero player){// change void later to Items i dont wanna code loot tables
+    public static void Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
             Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
@@ -112,6 +112,7 @@ public class Main {
                     }
                 case "attack":
                     enemy.takeDamage(player.hero_attack());
+                    SlowText.run(Integer.toString(enemy.name+""+enemy.health));
 
             }
             player.takeDamage(enemy.eAttack());

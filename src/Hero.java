@@ -42,10 +42,10 @@ public class Hero {
     public String getInfo(){
         return name+" "+health+" hp "+attack+" attack "+defense+" defense";
     }
-    public void grabItem(){
+    public void grabItem() throws InterruptedException{
         String area = "safari";
         String item;
-        System.out.print("what item would you like to grab");
+        SlowText.run("what item would you like to grab\n");
         Scanner hand = new Scanner(System.in);
         item = hand.nextLine();
         switch(item){
