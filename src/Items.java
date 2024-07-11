@@ -5,6 +5,7 @@ public class Items {
     public static Weapons Stick = new Weapons("Stick",10);
     public static Weapons bBat = new Weapons("Baseball Bat",10);
     public static Weapons Spear = new Weapons("Spear",10);
+    public static Weapons Rock = new Weapons("Rock",10);
     public String Iname;
     public int power;
     public Items(String Iname, int power){
