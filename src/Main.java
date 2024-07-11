@@ -76,7 +76,7 @@ public class Main {
         }
 
         // game start true game
-        P1.grabItem();
+        P1.grabItem(Monster.antsL);
         Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
