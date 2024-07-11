@@ -1,12 +1,12 @@
 public class Monster {
-    static Items[] snakeL = {Items.iSword, Items.Rock};
-    static Items[] tigerL = {Items.iSword, Items.Rock};
+    static Items[] snakeL = {Items.iSword, Items.Rock, Items.Fang};
+    static Items[] tigerL = {Items.iSword, Items.Rock, Items.Fang};
     static Items[] buffafaloL = {Items.iSword, Items.Rock};
     static Items[] elefalantL = {Items.iSword, Items.Rock};
     static Items[] chickenL = {Items.iSword, Items.Rock};
-    static Items[] entsL = {Items.iSword, Items.Rock};
-    static Items[] crocodileL = {Items.iSword, Items.Rock};
-    static Items[] pantherL = {Items.iSword, Items.Rock};
+    static Items[] entsL = {Items.iSword, Items.Stick, Items.Spear, Items.Javelin};
+    static Items[] crocodileL = {Items.Rock, Items.Stick, Items.pFrog, Items.Fang};
+    static Items[] pantherL = {Items.iSword, Items.Rock, Items.Fang};
     static Items[] gorrilaL = {Items.iSword, Items.Rock};
     static Items[] slimesL = {Items.iSword, Items.Rock};
     static Items[] ratsL = {Items.iSword, Items.Rock};
@@ -57,5 +57,9 @@ public class Monster {
     public void takeDamage(int weapon){
         weapon = weapon - defense;
         health = health - weapon;
+        if(health<0) {
+            health = 0;
+
+        }
     }
 }

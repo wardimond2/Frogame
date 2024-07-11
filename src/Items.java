@@ -7,6 +7,7 @@ public class Items {
     public static Weapons Spear = new Weapons("Spear",10);
     public static Weapons Rock = new Weapons("Rock",10);
     public static Weapons pFrog = new Weapons("Poison Dart Frog",10);
+    public static Weapons Fang = new Weapons("Fang",10);
     public String Iname;
     public int power;
     public Items(String Iname, int power){
