@@ -11,14 +11,14 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
-        String[] npcDialouge = {"help us hero ", "save us from (insert big bad enemy here) ", "quickly hero power up to save us all ", "IM DIEING SAVE ME "};
+        String[] npcDialouge = {"help us hero ", "save us from rothbart` ", "quickly hero power up to save us all ", "IM DIEING SAVE ME "};
         double heroHealth;
         int heroAC;
         int heroArcana;
         // game start - init
         SlowText.run("What is your hero's name?\n");
         heroName = playerInput.nextLine();
-        Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3);
+        Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3, 20);
         SlowText.run("\nWelcome, " + heroName + "!\n");
         while (true) {
             SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n");
@@ -84,7 +84,7 @@ public class Main {
         // GAME fOR REAL THIS TIME
         while(run == true){
             playerInput.nextLine();
-            System.out.println("walk, battle, talk");
+            System.out.println("walk, battle, talk, rest");
             String menue = playerInput.nextLine();
             switch(menue){
                 case "walk":
@@ -98,7 +98,10 @@ public class Main {
                     int louge = rander.nextInt(3);
                     SlowText.run(npcDialouge[louge]);
                     break;
+                case "rest":
+                P1.rest();
             }
+            System.out.println("");
             place = walking();
         }
         Battle(rdmonster(place, 'm', 1), P1);
@@ -156,9 +159,11 @@ public class Main {
             System.out.println("your hero has "+player.health+" hp left.");
             if(enemy.health <= 0){
                 System.out.println("you've defeated the enemy");
+                break;
             }
             if(player.health <= 0){
                 System.out.println("you've failed your mission");
+                break;
             }
 
         }

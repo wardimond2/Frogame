@@ -11,7 +11,8 @@ public class Hero {
     public int dexterity;
     public int constitution;
     public int intelligence;
-    public Hero(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance){
+    public int Maxhealth;
+    public Hero(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance, int max_health){
     this.name = name;
     this.attack = attack;
     this.health = health;
@@ -20,6 +21,7 @@ public class Hero {
     this.dexterity = dexterity;
     this.constitution = constitution;
     this.intelligence = intelligance;
+    this.Maxhealth = health;
     Items empty = new Items("empty", 0);
 
     inventory = new Items[5];
@@ -60,6 +62,9 @@ public class Hero {
                 }
 
             }
+        }
+        public void rest(){
+        health = Maxhealth;
         }
     public void UseItem(String item) {
 
