@@ -15,7 +15,7 @@ public class Monster {
     static Monster ants = new Monster("ants",10,15,10, Snakel);
     static Monster cats = new Monster("cats",10,15,10, Snakel);
     // defining areas
-   public static  Monster[] safari ={tiger, buffafalo, elefalant, chicken};
+   public static  Monster[] swamp ={tiger, buffafalo, elefalant, chicken};
    public static Monster[] Forest ={snakes, ents, crocodile};
     public static Monster[] jungle ={snakes, panther, gorrila};
     public static Monster[] castle ={slimes, rats, snakes, chicken};

@@ -43,14 +43,14 @@ public class Hero {
         return name+" "+health+" hp "+attack+" attack "+defense+" defense";
     }
     public void grabItem() throws InterruptedException{
-        String area = "safari";
+        String area = "swamp";
         String item;
         SlowText.run("what item would you like to grab\n");
         Scanner hand = new Scanner(System.in);
         item = hand.nextLine();
         switch(item){
             case "iron sword":
-                if(area == "safari"){
+                if(area == "swamp"){
                 Weapons iSword = new Weapons("iron sword",10);
                 System.out.println("which slot would you like to fill" );
                 int slot = hand.nextInt();

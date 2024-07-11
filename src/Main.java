@@ -11,6 +11,7 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
+        String[] npcDialouge = {"help us hero"};
         double heroHealth;
         int heroAC;
         int heroArcana;
@@ -76,12 +77,23 @@ public class Main {
 
         // game start true game
         P1.grabItem();
-        Monster[] place = Monster.safari;
+        Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
-        boolean chosen = true;
-        while(chosen == true){
-            walking();
+        boolean run = true;
+        // GAME FR+OR REAL THIS TIME
+        while(run == true){
+            playerInput.nextLine();
+            String menue = playerInput.nextLine();
+            switch(menue){
+                case "walk":
+                    place = walking();
+                case "battle":
+                    Battle(rdmonster(place, 'm', 1), P1);
+                case"talk":
+
+            }
+            place = walking();
         }
         Battle(rdmonster(place, 'm', 1), P1);
     }
@@ -92,8 +104,8 @@ public class Main {
         area = walk.nextLine();
         Monster[] place = {Monster.snakes};
         switch (area){
-            case "safari":
-                place = Monster.safari;
+            case "savanna":
+                place = Monster.swamp;
                 break;
             case "forest":
                 place = Monster.Forest;
