@@ -7,29 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) throws InterruptedException{
-        // defining loot tables
-        Items[] Snakel = {Items.iSword};
-        // defining all enemies and they're stats
-        Monster snakes = new Monster("snake", 10, 10, 10, Snakel);
-        Monster tiger = new Monster("tiger", 10, 10, 10, Snakel);
-        Monster buffafalo = new Monster("buffalo", 10,10,10, Snakel);
-        Monster elefalant = new Monster("elephant", 10, 10, 10, Snakel);
-        Monster chicken = new Monster("chicken", 10, 10, 10 ,Snakel);
-        Monster ents = new Monster("ent", 10, 10, 10 ,Snakel);
-        Monster crocodile = new Monster("crocodile", 10,10,10, Snakel);
-        Monster panther = new Monster("panther", 10,10,10, Snakel);
-        Monster gorrila = new Monster("gorrila",10,10,10, Snakel);
-        Monster slimes = new Monster("slimes",10,10,10, Snakel);
-        Monster rats = new Monster("rats",10,10,10, Snakel);
-        Monster bats = new Monster("bats",10,10,10,Snakel);
-        Monster ants = new Monster("ants",10,10,10, Snakel);
-        Monster cats = new Monster("cats",10,10,10, Snakel);
         // defining areas
-        Monster[] safari ={tiger, buffafalo, elefalant, chicken};
-        Monster[] Forest ={snakes, ents, crocodile};
-        Monster[] jungle ={snakes, panther, gorrila};
-        Monster[] castle ={slimes, rats, snakes, chicken};
-        Monster[] Cave = {bats, rats, ants, cats};
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
@@ -39,7 +17,7 @@ public class Main {
         // game start - init
         SlowText.run("What is your hero's name?\n");
         heroName = playerInput.nextLine();
-        Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
+        Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3);
         SlowText.run("\nWelcome, " + heroName + "!\n");
         while (true) {
             SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n");
@@ -50,7 +28,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
                     System.out.println("Your class is " + heroClass);
-                    P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
+                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -60,7 +38,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
                     SlowText.run("Your class is " + heroClass+" ");
-                    P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
+                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -70,7 +48,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Wizard";
                     SlowText.run("Your class is " + heroClass+"\n");
-                    P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
+                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -81,7 +59,7 @@ public class Main {
                     heroClass = "Hunter";
                     //heroClass = "Hunter";
                     SlowText.run("Your class is " + heroClass+"\n");
-                    P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
+                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -90,7 +68,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Bard";
                     SlowText.run("Your class is " + heroClass+"\n");
-                    P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
+                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -98,7 +76,7 @@ public class Main {
 
         // game start true game
         P1.grabItem();
-        Monster[] place = safari;
+        Monster[] place = Monster.safari;
         String land = "";
         Scanner walk = new Scanner(System.in);
         boolean chosen = true;
@@ -107,30 +85,50 @@ public class Main {
             land = walk.nextLine();
             switch (land){
                 case "safari":
-                    place = safari;
-                    chosen = false;
+                    place = Monster.safari;
                     break;
                 case "forest":
-                    place = Forest;
-                    chosen = false;
+                    place = Monster.Forest;
                     break;
                 case "jungle":
-                    place = jungle;
-                    chosen = false;
+                    place = Monster.jungle;
                     break;
                 case "castle":
-                    place = castle;
-                    chosen = false;
                     break;
                 case "cave":
-                    place = Cave;
-                    chosen = false;
+                    place = Monster.Cave;
                     break;
 
             }
 
         }
         Battle(rdmonster(place, 'm', 1), P1);
+    }
+    public static Monster[] walking()throws InterruptedException{
+        Scanner walk = new Scanner(System.in);
+        String area = "";
+        SlowText.run("where would you like to go\n");
+        area = walk.nextLine();
+        Monster[] place;
+        switch (area){
+            case "safari":
+                place = Monster.safari;
+                break;
+            case "forest":
+                place = Monster.Forest;
+                break;
+            case "jungle":
+                place = Monster.jungle;
+                break;
+            case "castle":
+                place = Monster.castle;
+                break;
+            case "cave":
+                place = Monster.Cave;
+                break;
+
+        }
+        return place;
     }
     public static void Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
