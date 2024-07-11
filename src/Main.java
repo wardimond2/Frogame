@@ -59,7 +59,7 @@ public class Main {
                 SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
-                    SlowText.run("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+" ");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
@@ -98,7 +98,39 @@ public class Main {
 
         // game start true game
         P1.grabItem();
-    Battle(rdmonster(safari, 'm', 1), P1);
+        Monster[] place = safari;
+        String land = "";
+        Scanner walk = new Scanner(System.in);
+        boolean chosen = true;
+        while(chosen == true){
+            SlowText.run("where would you like to go\n");
+            land = walk.nextLine();
+            switch (land){
+                case "safari":
+                    place = safari;
+                    chosen = false;
+                    break;
+                case "forest":
+                    place = Forest;
+                    chosen = false;
+                    break;
+                case "jungle":
+                    place = jungle;
+                    chosen = false;
+                    break;
+                case "castle":
+                    place = castle;
+                    chosen = false;
+                    break;
+                case "cave":
+                    place = Cave;
+                    chosen = false;
+                    break;
+
+            }
+
+        }
+        Battle(rdmonster(place, 'm', 1), P1);
     }
     public static void Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         while(enemy.health >= 0 && player.health >= 0){
