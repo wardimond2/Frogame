@@ -1,6 +1,6 @@
 public class Monster {
     // contructor
-    public Monster(String name, int health, int attack, int defense){
+    public Monster(String name, int health, int attack, int defense, Items[] loot){
         this.name = name;
         this.health = health;
         this.attack = attack;

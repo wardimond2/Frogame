@@ -45,6 +45,7 @@ public class Hero {
     public void grabItem(){
         String area = "safari";
         String item;
+        System.out.print("what item would you like to grab");
         Scanner hand = new Scanner(System.in);
         item = hand.nextLine();
         switch(item){
@@ -60,20 +61,25 @@ public class Hero {
 
             }
         }
-    public void UseItem(String item){
+    public void UseItem(String item) {
 
-        switch(item){
-            case "small health potion":
-                health = health+5;
-            case "medium health potion":
-                health = health+10;
-            case "large health potion":
-                health = health+15;
+        boolean exists = false;
+        for (Items i : inventory) {
+            if (i.Iname == item) {
+                i = new Items("empty", 0);
+                exists = true;
+            }
         }
-        for (Items i : inventory){
-            if (i.Iname == item){
-            i = new Items("empty", 0);
-        }
+        if (exists == true) {
+            switch (item) {
+                case "small health potion":
+                    health = health + 5;
+                case "medium health potion":
+                    health = health + 10;
+                case "large health potion":
+                    health = health + 15;
+                case "exploding javalin":
+            }
         }
     }
     public void classChange(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance){
