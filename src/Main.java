@@ -1,24 +1,29 @@
+import jdk.jfr.consumer.RecordedFrame;
+
+import java.io.Console;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
+        // defining loot tables
+        Items[] Snakel = {Items.iSword};
         // defining all enemies and they're stats
-        Monster snakes = new Monster("snake", 10, 10, 10);
-        Monster tiger = new Monster("tiger", 10, 10, 10);
-        Monster buffafalo = new Monster("buffalo", 10,10,10);
-        Monster elefalant = new Monster("elephant", 10, 10, 10);
-        Monster chicken = new Monster("chicken", 10, 10, 10);
-        Monster ents = new Monster("ent", 10, 10, 10);
-        Monster crocodile = new Monster("crocodile", 10,10,10);
-        Monster panther = new Monster("panther", 10,10,10);
-        Monster gorrila = new Monster("gorrila",10,10,10);
-        Monster slimes = new Monster("slimes",10,10,10);
-        Monster rats = new Monster("rats",10,10,10);
-        Monster bats = new Monster("bats",10,10,10);
-        Monster ants = new Monster("ants",10,10,10);
-        Monster cats = new Monster("cats",10,10,10);
+        Monster snakes = new Monster("snake", 10, 10, 10, Snakel);
+        Monster tiger = new Monster("tiger", 10, 10, 10, Snakel);
+        Monster buffafalo = new Monster("buffalo", 10,10,10, Snakel);
+        Monster elefalant = new Monster("elephant", 10, 10, 10, Snakel);
+        Monster chicken = new Monster("chicken", 10, 10, 10 ,Snakel);
+        Monster ents = new Monster("ent", 10, 10, 10 ,Snakel);
+        Monster crocodile = new Monster("crocodile", 10,10,10, Snakel);
+        Monster panther = new Monster("panther", 10,10,10, Snakel);
+        Monster gorrila = new Monster("gorrila",10,10,10, Snakel);
+        Monster slimes = new Monster("slimes",10,10,10, Snakel);
+        Monster rats = new Monster("rats",10,10,10, Snakel);
+        Monster bats = new Monster("bats",10,10,10,Snakel);
+        Monster ants = new Monster("ants",10,10,10, Snakel);
+        Monster cats = new Monster("cats",10,10,10, Snakel);
         // defining areas
         Monster[] safari ={tiger, buffafalo, elefalant, chicken};
         Monster[] Forest ={snakes, ents, crocodile};
