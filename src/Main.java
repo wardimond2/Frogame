@@ -49,7 +49,7 @@ public class Main {
                 SlowText.run("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
-                    System.out.println("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+"\n");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
@@ -59,7 +59,7 @@ public class Main {
                 SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
-                    System.out.println("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+"\n");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
