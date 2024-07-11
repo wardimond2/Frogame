@@ -37,16 +37,16 @@ public class Main {
         int heroAC;
         int heroArcana;
         // game start - init
-        System.out.println("What is your hero's name?");
+        SlowText.run("What is your hero's name?\n");
         heroName = playerInput.nextLine();
         Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
-        System.out.println("\nWelcome, " + heroName + "!");
+        SlowText.run("\nWelcome, " + heroName + "!\n");
         while (true) {
-            System.out.println("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard");
+            SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n");
             String playerclass = playerInput.nextLine();
             if(Objects.equals(playerclass, "Warrior") || Objects.equals(playerclass, "1"))
             {
-                System.out.println("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):");
+                SlowText.run("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
                     System.out.println("Your class is " + heroClass);
@@ -56,7 +56,7 @@ public class Main {
             }
             else if(Objects.equals(playerclass, "Paladin") || Objects.equals(playerclass, "2"))
             {
-                System.out.println("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Paladin? (y/n):");
+                SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
                     System.out.println("Your class is " + heroClass);
@@ -66,30 +66,30 @@ public class Main {
             }
             else if(Objects.equals(playerclass, "Wizard") || Objects.equals(playerclass, "3"))
             {
-                System.out.println("\nWizard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Wizard? (y/n):");
+                SlowText.run("\nWizard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Wizard";
-                    System.out.println("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+"\n");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
             else if(Objects.equals(playerclass, "Hunter") || Objects.equals(playerclass, "4"))
             {
-                System.out.println("\nHunter Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Hunter? (y/n):");
+                SlowText.run("\nHunter Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Hunter";
                     //heroClass = "Hunter";
-                    System.out.println("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+"\n");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
             }
             else if(Objects.equals(playerclass, "Bard") || Objects.equals(playerclass, "5")) {
-                System.out.println("\nBard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Bard? (y/n):");
+                SlowText.run("\nBard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Bard";
-                    System.out.println("Your class is " + heroClass);
+                    SlowText.run("Your class is " + heroClass+"\n");
                     P1.classChange(heroName, 19, 20, 10, 19, 15, 2, 3);
                     break;
                 }
