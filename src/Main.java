@@ -159,6 +159,3 @@ public class Main {
         return enemy;
     }
 }
-
-
-
