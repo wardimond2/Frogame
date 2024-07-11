@@ -81,26 +81,7 @@ public class Main {
         Scanner walk = new Scanner(System.in);
         boolean chosen = true;
         while(chosen == true){
-            SlowText.run("where would you like to go\n");
-            land = walk.nextLine();
-            switch (land){
-                case "safari":
-                    place = Monster.safari;
-                    break;
-                case "forest":
-                    place = Monster.Forest;
-                    break;
-                case "jungle":
-                    place = Monster.jungle;
-                    break;
-                case "castle":
-                    break;
-                case "cave":
-                    place = Monster.Cave;
-                    break;
-
-            }
-
+            walking();
         }
         Battle(rdmonster(place, 'm', 1), P1);
     }
@@ -109,7 +90,7 @@ public class Main {
         String area = "";
         SlowText.run("where would you like to go\n");
         area = walk.nextLine();
-        Monster[] place;
+        Monster[] place = {Monster.snakes};
         switch (area){
             case "safari":
                 place = Monster.safari;
