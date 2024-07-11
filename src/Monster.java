@@ -21,7 +21,7 @@ public class Monster {
     static Monster ents = new Monster("Ent", 10, 10, 15 ,entsL);
     static Monster crocodile = new Monster("Crocodile", 10,15,10, crocodileL);
     static Monster panther = new Monster("Panther", 10,15,10, pantherL);
-    static Monster gorrila = new Monster("Gorrila",10,15,10, gorrilaL);
+    static Monster gorrila = new Monster("Gorilla",10,15,10, gorrilaL);
     static Monster slimes = new Monster("Slimes",10,15,10, slimesL);
     static Monster rats = new Monster("Rats",10,15,10, ratsL);
     static Monster bats = new Monster("Bats",10,15,10,batsL);

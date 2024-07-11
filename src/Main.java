@@ -174,7 +174,7 @@ public class Main {
         Random generator = new Random();
         encounter = generator.nextInt(monsters.length);
         Monster enemy = monsters[encounter];
-        System.out.println("you've encountered a " + enemy.name + " how will you respond");
+        System.out.println(enemy.name+" attacks!");
         return enemy;
     }
 }
