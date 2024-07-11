@@ -76,7 +76,7 @@ public class Main {
 
         // game start true game
         P1.grabItem();
-        Monster[] place = Monster.safari;
+        Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
         boolean chosen = true;
@@ -85,7 +85,7 @@ public class Main {
             land = walk.nextLine();
             switch (land){
                 case "safari":
-                    place = Monster.safari;
+                    place = Monster.swamp;
                     break;
                 case "forest":
                     place = Monster.Forest;
@@ -109,10 +109,10 @@ public class Main {
         String area = "";
         SlowText.run("where would you like to go\n");
         area = walk.nextLine();
-        Monster[] place;
+        Monster[] place = {Monster.snake};
         switch (area){
-            case "safari":
-                place = Monster.safari;
+            case "swamp":
+                place = Monster.swamp;
                 break;
             case "forest":
                 place = Monster.Forest;
