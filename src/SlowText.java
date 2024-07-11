@@ -6,9 +6,10 @@ public class SlowText {
         String text = "cheese is good";
         slowtext(text);
     }
-    public static void slowtext(String prompt) throws InterruptedException{
-        for (int i = prompt.length(); i <= prompt.length(); i--)
+    public static void slowtext(String prompt) throws InterruptedException {
+        for (int i = prompt.length(); i <= prompt.length(); i--) {
             System.out.print(prompt.charAt(i));
-        TimeUnit.MILLISECONDS.sleep(100);
+            TimeUnit.MILLISECONDS.sleep(100);
+        }
     }
 }

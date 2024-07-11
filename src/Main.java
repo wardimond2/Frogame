@@ -92,6 +92,7 @@ public class Main {
         }
 
         // game start true game
+        P1.grabItem();
     Battle(rdmonster(safari, 'm', 1), P1);
     }
     public static void Battle(Monster enemy, Hero player){// change void later to Items i dont wanna code loot tables
@@ -118,6 +119,7 @@ public class Main {
             }
 
         }
+        System.out.println(enemy.health);
     }
     public static Monster rdmonster(Monster[] monsters, char difficulty, int level) {
         int encounter = 0;
