@@ -81,7 +81,7 @@ public class Main {
         String land = "";
         Scanner walk = new Scanner(System.in);
         boolean run = true;
-        // GAME FR+OR REAL THIS TIME
+        // GAME fOR REAL THIS TIME
         while(run == true){
             playerInput.nextLine();
             String menue = playerInput.nextLine();
