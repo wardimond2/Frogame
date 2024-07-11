@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws InterruptedException{
         // defining loot tables
         Items[] Snakel = {Items.iSword};
         // defining all enemies and they're stats
@@ -37,16 +37,16 @@ public class Main {
         int heroAC;
         int heroArcana;
         // game start - init
-        System.out.println("What is your hero's name?");
+        SlowText.run("What is your hero's name?\n");
         heroName = playerInput.nextLine();
         Hero P1 = new Hero(heroName, 19, 20, 10, 19, 15, 2, 3);
-        System.out.println("\nWelcome, " + heroName + "!");
+        SlowText.run("\nWelcome, " + heroName + "!\n");
         while (true) {
-            System.out.println("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard");
+            SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n");
             String playerclass = playerInput.nextLine();
             if(Objects.equals(playerclass, "Warrior") || Objects.equals(playerclass, "1"))
             {
-                System.out.println("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):");
+                SlowText.run("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n");
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
                     System.out.println("Your class is " + heroClass);
