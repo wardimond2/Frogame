@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 public class Hero {
     public String name;
@@ -12,6 +13,7 @@ public class Hero {
     public int constitution;
     public int intelligence;
     public int Maxhealth;
+    public boolean exists;
     public Hero(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance, int max_health){
     this.name = name;
     this.attack = attack;
@@ -44,24 +46,59 @@ public class Hero {
     public String getInfo(){
         return name+" "+health+" hp "+attack+" attack "+defense+" defense";
     }
-    public void grabItem() throws InterruptedException{
+    public void grabItem(Items[] item) throws InterruptedException{
         String area = "swamp";
-        String item;
         SlowText.run("what item would you like to grab\n");
+        for(Items i : item){
+            System.out.println(i.Iname);
+        }
         Scanner hand = new Scanner(System.in);
-        item = hand.nextLine();
-        switch(item){
-            case "iron sword":
-                if(area == "swamp"){
-                Weapons iSword = new Weapons("iron sword",10);
-                System.out.println("which slot would you like to fill" );
-                int slot = hand.nextInt();
-                slot--;
-                inventory[slot] = iSword;
-                hero_upgrade(iSword.power);
-                }
-
+        String items;
+        items = hand.nextLine();
+        items = items.toLowerCase();
+        Items cItem = Items.Fang;
+        exists = false;
+        for (Items i : item) {
+            if (i.Iname == items) {
+                exists = true;
             }
+        }
+        switch(items) {
+            case "iron sword":
+                cItem = Items.iSword;
+                break;
+            case "javalin":
+                cItem = Items.Javelin;
+                break;
+            case "dagger":
+                cItem = Items.Dagger;
+                break;
+            case "stick":
+                cItem = Items.Stick;
+                break;
+            case "bBat":
+                cItem = Items.bBat;
+                break;
+            case "spear":
+                cItem = Items.Spear;
+                break;
+            case "rock":
+                cItem = Items.Rock;
+                break;
+            case "pfrog":
+                cItem = Items.pFrog;
+                break;
+            case "fang":
+                cItem = Items.Fang;
+                break;
+        }
+            Scanner hands2 = new Scanner(System.in);
+            System.out.println("what slot would you like to put it in");
+            int slot = hands2.nextInt();
+            slot--;
+            inventory[slot] = cItem;
+            hero_upgrade(cItem.power);
+    
         }
         public void rest(){
         health = Maxhealth;
