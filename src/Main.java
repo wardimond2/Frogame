@@ -1,6 +1,7 @@
 import jdk.jfr.consumer.RecordedFrame;
 
 import java.io.Console;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
@@ -81,12 +82,14 @@ public class Main {
         String land = "";
         Scanner walk = new Scanner(System.in);
         SlowText.run("*You wake up leaning against a tree,*",1);
+        P1.hero_upgrade(Items.Stick.power);
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
             playerInput.nextLine();
             System.out.println("Walk | Battle | Talk | Rest");
             String menue = playerInput.nextLine();
+            menue.toLowerCase();
             switch(menue){
                 case "walk":
                     place = walking();
@@ -102,7 +105,6 @@ public class Main {
                 case "rest":
                 P1.rest();
             }
-            place = walking();
         }
         Battle(rdmonster(place, 'm', 1), P1);
     }
@@ -148,6 +150,8 @@ public class Main {
                         System.out.println(i.Iname);
 
                     }
+                    String items45 = action.nextLine();
+                    player.UseItem(items45);
                     break;
                 case "attack":
 
@@ -168,7 +172,7 @@ public class Main {
             SlowText.run("your hero has "+player.health+" hp left.\n",1);
             if(enemy.health <= 0){
                 System.out.println("You have defeated "+enemy.name+"!");
-
+                player.grabItem(enemy.loot);
                 break;
             }
             if(player.health <= 0){

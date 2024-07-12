@@ -1,4 +1,5 @@
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 public class Hero {
     public String name;
@@ -26,12 +27,13 @@ public class Hero {
     this.Maxhealth = health;
     Items empty = new Items("empty", 5, 0, 0, 2);
 
-    inventory = new Items[5];
-        inventory[0] = empty;
-        inventory[1] = empty;
-        inventory[2] = empty;
-        inventory[3] = empty;
-        inventory[4] = empty;
+    inventory = new Items[8];
+
+    for (int i = 0; i < inventory.length; i++)
+    {
+        inventory[i] = empty;
+    }
+
     }
     public void takeDamage(int eWeapon){
         health -= eWeapon;
@@ -46,8 +48,16 @@ public class Hero {
         return name+" "+health+" hp "+attack+" attack "+defense+" defense";
     }
     public void grabItem(Items[] item) throws InterruptedException{
-        String area = "swamp";
         SlowText.run("what item would you like to grab\n", 2);
+        Random generator = new Random();
+        int a = 0;
+        for(Items i : item){
+            int prob3 = generator.nextInt(100);
+            if (i.prob >= prob3){
+                item[a] = i;
+                a++;
+            }
+        }
         for(Items i : item){
             System.out.println(i.Iname);
         }
