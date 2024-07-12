@@ -38,11 +38,11 @@ public class Hero {
     public void takeDamage(int eWeapon){
         health -= eWeapon;
     }
-    public int hero_attack(){
-        return damage;
-    }
-    public void hero_upgrade(int weapon){
-        damage = attack + weapon;
+    public int hero_attack(Weapons weapon){
+
+        Random generator = new Random();
+        int weaponA = generator.nextInt(weapon.dmg);
+        return attack + weaponA;
     }
     public String getInfo(){
         return name+" "+health+" hp "+attack+" attack "+defense+" defense";
@@ -100,13 +100,21 @@ public class Hero {
             case "fang":
                 cItem = Items.Fang;
                 break;
+            case "small health potion":
+                cItem = potions.sshpotion;
+                break;
+            case "medium health potion":
+                cItem = potions.smhpotion;
+                break;
+            case "large health potion":
+                cItem = potions.tbhpotion;
+                break;
         }
             Scanner hands2 = new Scanner(System.in);
-            System.out.println("what slot would you like to put it in");
+            System.out.println("What slot would you like to put it in? (Slot 1 is what weapon you are holding.)");
             int slot = hands2.nextInt();
             slot--;
             inventory[slot] = cItem;
-            hero_upgrade(cItem.power);
     
         }
         public void rest(){

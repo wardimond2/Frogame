@@ -12,25 +12,26 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
-        String[] npcDialouge = {"Go fight some bad guys.\n", "An Elephant attacked me help!\n", "Hullo!\n", "IM DIEING SAVE ME\n", "\'MERICA\n"};
+        String[] npcDialouge = {"Go fight some bad guys.\n", "An Elephant attacked me help!\n", "Hi!\n", "IM DIEING SAVE ME\n", "\'MERICA\n"};
         double heroHealth;
         int heroAC;
         int heroArcana;
+        Weapons useWeapon = Items.Stick;
         // game start - init
         SlowText.run("What is your hero's name?\n", 1);
         heroName = playerInput.nextLine();
-        Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3, 20);
+        Hero P1 = new Hero(heroName, 3, 20, 15, 19, 15, 2, 3, 20);
         SlowText.run("\nWelcome, " + heroName + "!\n", 1);
         while (true) {
-            SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n", 1);
+            SlowText.run("What class are you?\n1: Warrior\n2: Paladin\n3: Wizard\n4: Hunter\n5: Bard\n(They dont do anything, it just looks cool.)\n", 1);
             String playerclass = playerInput.nextLine();
             if(Objects.equals(playerclass, "Warrior") || Objects.equals(playerclass, "1"))
             {
                 SlowText.run("\nWarrior Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n", 1);
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Warrior";
-                    System.out.println("Your class is " + heroClass);
-                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
+                    SlowText.run("Your class is " + heroClass+"\n",1);
+                    P1.classChange(heroName, 2, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -40,7 +41,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
                     SlowText.run("Your class is " + heroClass+" ", 1);
-                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
+                    P1.classChange(heroName, 3, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -50,7 +51,7 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Wizard";
                     SlowText.run("Your class is " + heroClass+"\n", 1);
-                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
+                    P1.classChange(heroName, 2, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -61,7 +62,7 @@ public class Main {
                     heroClass = "Hunter";
                     //heroClass = "Hunter";
                     SlowText.run("Your class is " + heroClass+"\n", 1);
-                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
+                    P1.classChange(heroName, 1, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
@@ -70,41 +71,41 @@ public class Main {
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Bard";
                     SlowText.run("Your class is " + heroClass+"\n", 1);
-                    P1.classChange(heroName, 19, 20, 15, 19, 15, 2, 3);
+                    P1.classChange(heroName, 4, 20, 15, 19, 15, 2, 3);
                     break;
                 }
             }
         }
 
         // game start true game
+        P1.inventory[1] = Items.Stick;
         String[][] swampl;
         swampl = new String[10][10];
         Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
-        P1.hero_upgrade(Items.Stick.power);
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
-            SlowText.run("Walk | Battle | Talk | Rest| Inventory\n",1);
+            SlowText.run("1: Travel | 2: Battle | 3: Talk | 4: Inventory\n",1);
             String menue = playerInput.nextLine();
             menue.toLowerCase();
             switch(menue){
-                case "walk":
+                case "1","Walk", "walk", "w":
                     place = walking();
                     break;
-                case "battle":
+                case "2","Battle","battle","b":
                     Battle(rdmonster(place, 'm', 1), P1);
                     break;
-                case"talk":
+                case"3","Talk", "talk", "t":
                     Random rander = new Random();
                     int louge = rander.nextInt(3);
                     SlowText.run(npcDialouge[louge], 1);
                     break;
-                case "Rest","rest","r":
+                case "5","Rest","rest","r":
                     P1.rest();
                     break;
-                case "Inventory", "inventory", "i", "inv":
+                case "4","Inventory", "inventory", "i", "inv":
                     for( Items i: P1.inventory){
                         System.out.println(i.Iname);
 
@@ -140,13 +141,46 @@ public class Main {
                 SlowText.run("You have reached the cave.\n",1);
                 place = Monster.Cave;
                 break;
-
         }
         return place;
     }
     public static Items Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         Random generator = new Random();
-        while (enemy.health >= 0 && player.health >= 0) {
+        Scanner action2 = new Scanner(System.in);
+        for (Items i : player.inventory) {
+            System.out.println(i.Iname);
+
+        }
+        System.out.println("which weapon would to attack with");
+        Weapons useWeapon = Items.Stick;
+        String weapon42 = action2.nextLine();
+        switch(weapon42) {
+            case "iron sword":
+                useWeapon = Items.bSword;
+                break;
+            case "javalin":
+                useWeapon = Items.Javelin;
+                break;
+            case "dagger":
+                useWeapon = Items.Dagger;
+                break;
+            case "stick":
+                useWeapon = Items.Stick;
+                break;
+            case "bBat":
+                useWeapon = Items.bBat;
+                break;
+            case "spear":
+                useWeapon = Items.Spear;
+                break;
+            case "rock":
+                useWeapon = Items.Rock;
+                break;
+            case "pfrog":
+                useWeapon = Items.pFrog;
+                break;
+        }
+                while (enemy.health >= 0 && player.health >= 0) {
             Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
             switch (Caction) {
@@ -161,11 +195,13 @@ public class Main {
                 case "attack":
 
                     int damage;
-                    if (enemy.defense <= player.attack + generator.nextInt(20)) {
-                        damage = generator.nextInt(player.attack) + 1;
+                    if (enemy.defense <= player.hero_attack(useWeapon) + generator.nextInt(20)) {
+                        damage = generator.nextInt(player.inventory[1].dmg) + 1;
                         enemy.takeDamage(damage);
                         SlowText.run("You did " + damage + " damage!\n", 1);
-
+                    }
+                    else{
+                        SlowText.run("You missed!",1);
                     }
                     if (player.defense <= enemy.attack + generator.nextInt(20)) {
                         damage = generator.nextInt(enemy.dmg) + 1;
@@ -175,6 +211,7 @@ public class Main {
                         SlowText.run(enemy.name + " missed!\n", 1);
                     }
                     SlowText.run("your hero has " + player.health + " hp left.\n", 1);
+                    SlowText.run(enemy.name+" has " + enemy.health + " hp left.\n", 1);
                     if (enemy.health <= 0) {
                         System.out.println("You have defeated " + enemy.name + "!");
                         player.grabItem(enemy.loot);
@@ -184,9 +221,7 @@ public class Main {
                         System.out.println("You have fallen to " + enemy.name + "...");
                         break;
                     }
-
             }
-            System.out.println(enemy.health);
         }
         return null;
     }

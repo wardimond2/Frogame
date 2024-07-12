@@ -61,8 +61,7 @@ public class Monster {
         return attack;
     }
     public void takeDamage(int weapon){
-        weapon = weapon - defense;
-        health = health - weapon;
+        health -= weapon;
         if(health<0) {
             health = 0;
         }
