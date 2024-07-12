@@ -2,8 +2,8 @@ import java.util.Locale;
 import java.util.Scanner;
 public class Hero {
     public String name;
-    private int attack;
-    private int damage;
+    public int attack;
+    public int damage;
     public int health;
     public int defense;
     public String Class;
@@ -34,8 +34,7 @@ public class Hero {
         inventory[4] = empty;
     }
     public void takeDamage(int eWeapon){
-        eWeapon = eWeapon - defense;
-        health = health - eWeapon;
+        health -= eWeapon;
     }
     public int hero_attack(){
         return damage;
@@ -108,7 +107,7 @@ public class Hero {
         boolean exists = false;
         for (Items i : inventory) {
             if (i.Iname == item) {
-                i = new Items("empty", 1,0,0, 0);
+                i = new Items("empty", 1,0,0, 2);
                 exists = true;
             }
         }
