@@ -15,6 +15,7 @@ public class Hero {
     public int intelligence;
     public int Maxhealth;
     public boolean exists;
+    public static Items empty = new Items("empty", 5, 0, 0, 2);
     public Hero(String name, int attack, int health, int defense, int strength, int dexterity,int constitution,int intelligance, int max_health){
     this.name = name;
     this.attack = attack;
@@ -25,7 +26,6 @@ public class Hero {
     this.constitution = constitution;
     this.intelligence = intelligance;
     this.Maxhealth = health;
-    Items empty = new Items("empty", 5, 0, 0, 2);
 
     inventory = new Items[8];
 
@@ -50,15 +50,16 @@ public class Hero {
     public void grabItem(Items[] item) throws InterruptedException{
         SlowText.run("what item would you like to grab\n", 2);
         Random generator = new Random();
+        Items[] items52={Hero.empty,Hero.empty,Hero.empty,Hero.empty };
         int a = 0;
         for(Items i : item){
-            int prob3 = generator.nextInt(100);
+            int prob3 = generator.nextInt(1);
             if (i.prob >= prob3){
-                item[a] = i;
+                items52[a] = i;
                 a++;
             }
         }
-        for(Items i : item){
+        for(Items i : items52){
             System.out.println(i.Iname);
         }
         Scanner hand = new Scanner(System.in);
@@ -103,7 +104,7 @@ public class Hero {
             case "small health potion":
                 cItem = potions.sshpotion;
                 break;
-            case "medium health potion":
+            case "super small health potion":
                 cItem = potions.smhpotion;
                 break;
             case "large health potion":

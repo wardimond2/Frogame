@@ -95,7 +95,9 @@ public class Main {
                     place = walking();
                     break;
                 case "2","Battle","battle","b":
+                    boolean battle_end = false;
                     Battle(rdmonster(place, 'm', 1), P1);
+
                     break;
                 case"3","Talk", "talk", "t":
                     Random rander = new Random();
@@ -181,7 +183,8 @@ public class Main {
                 useWeapon = Items.pFrog;
                 break;
         }
-                while (enemy.health >= 0 && player.health >= 0) {
+        boolean battle_end = false;
+        while (battle_end == false) {
             Scanner action = new Scanner(System.in);
             System.out.println("1: Attack | 2: Inventory");
             String Caction = action.nextLine();
@@ -217,10 +220,12 @@ public class Main {
                     if (enemy.health <= 0) {
                         System.out.println("You have defeated " + enemy.name + "!\n");
                         player.grabItem(enemy.loot);
+                         battle_end = true;
                         break;
                     }
                     if (player.health <= 0) {
                         System.out.println("You have fallen to " + enemy.name + "...\n");
+                         battle_end = true;
                         break;
                     }
                     break;
