@@ -1,5 +1,4 @@
 import jdk.jfr.consumer.RecordedFrame;
-
 import java.io.Console;
 import java.util.Locale;
 import java.util.Objects;
@@ -13,12 +12,11 @@ public class Main {
         Scanner playerInput = new Scanner(System.in);
         String heroName;
         String heroClass;
-        String[] npcDialouge = {"help us hero ", "save us from rothbart` ", "quickly hero power up to save us all ", "IM DIEING SAVE ME "};
+        String[] npcDialouge = {"Go fight some bad guys.\n", "An Elephant attacked me help!\n", "Hullo!\n", "IM DIEING SAVE ME\n", "\'MERICA\n"};
         double heroHealth;
         int heroAC;
         int heroArcana;
         // game start - init
-        SlowText.run("*You wake up amongst the rubble of your once standing home, now felled by the King Serpent.*",2);
         SlowText.run("What is your hero's name?\n", 1);
         heroName = playerInput.nextLine();
         Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3, 20);
@@ -79,10 +77,11 @@ public class Main {
         }
 
         // game start true game
+        String[][] swampl;
+        swampl = new String[10][10];
         Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
-        SlowText.run("*You wake up leaning against a tree,*\n",1);
         P1.hero_upgrade(Items.Stick.power);
         boolean run = true;
         // GAME fOR REAL THIS TIME
@@ -102,15 +101,14 @@ public class Main {
                     int louge = rander.nextInt(3);
                     SlowText.run(npcDialouge[louge], 1);
                     break;
-                case "rest":
+                case "Rest","rest","r":
                     P1.rest();
                     break;
-                case "inventory":
+                case "Inventory", "inventory", "i", "inv":
                     for( Items i: P1.inventory){
                         System.out.println(i.Iname);
 
                     }
-
             }
         }
         Battle(rdmonster(place, 'm', 1), P1);
@@ -124,22 +122,22 @@ public class Main {
         switch (area){
             case "swamp":
                 place = Monster.swamp;
-                System.out.println("You have reached the swamp.  ");
+                SlowText.run("You have reached the swamp.\n",1);
                 break;
             case "forest":
-                System.out.println("You have reached the forest.");
+                SlowText.run("You have reached the forest.\n",1);
                 place = Monster.Forest;
                 break;
             case "jungle":
                 place = Monster.jungle;
-                System.out.println("You have reached the jungle.");
+                SlowText.run("You have reached the jungle.\n",1);
                 break;
             case "castle":
-                System.out.println("You have reached the castle.");
+                SlowText.run("You have reached the castle.\n",1);
                 place = Monster.castle;
                 break;
             case "cave":
-                System.out.println("You have reached the cave.");
+                SlowText.run("You have reached the cave.\n",1);
                 place = Monster.Cave;
                 break;
 
@@ -148,12 +146,12 @@ public class Main {
     }
     public static Items Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
         Random generator = new Random();
-        while(enemy.health >= 0 && player.health >= 0){
+        while (enemy.health >= 0 && player.health >= 0) {
             Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
-            switch(Caction){
-                case "inventory","i","inv":
-                    for( Items i: player.inventory){
+            switch (Caction) {
+                case "inventory", "i", "inv":
+                    for (Items i : player.inventory) {
                         System.out.println(i.Iname);
 
                     }
@@ -162,33 +160,34 @@ public class Main {
                     break;
                 case "attack":
 
-                    enemy.takeDamage(player.hero_attack());
-                    SlowText.run(enemy.name+" has "+Integer.toString(enemy.health)+" HP left.\n", 1);
-                    break;
+                    int damage;
+                    if (enemy.defense <= player.attack + generator.nextInt(20)) {
+                        damage = generator.nextInt(player.attack) + 1;
+                        enemy.takeDamage(damage);
+                        SlowText.run("You did " + damage + " damage!\n", 1);
+
+                    }
+                    if (player.defense <= enemy.attack + generator.nextInt(20)) {
+                        damage = generator.nextInt(enemy.dmg) + 1;
+                        player.takeDamage(damage);
+                        SlowText.run(enemy.name + " did " + damage + " damage!\n", 1);
+                    } else {
+                        SlowText.run(enemy.name + " missed!\n", 1);
+                    }
+                    SlowText.run("your hero has " + player.health + " hp left.\n", 1);
+                    if (enemy.health <= 0) {
+                        System.out.println("You have defeated " + enemy.name + "!");
+                        player.grabItem(enemy.loot);
+                        break;
+                    }
+                    if (player.health <= 0) {
+                        System.out.println("You have fallen to " + enemy.name + "...");
+                        break;
+                    }
 
             }
-            int damage;
-            if (player.defense <= enemy.attack + generator.nextInt(20)) {
-                damage = generator.nextInt(enemy.dmg) + 1;
-                player.takeDamage(damage);
-                SlowText.run(enemy.name+" did "+damage+" damage!\n",1);
-            }
-            else {
-                SlowText.run(enemy.name+" missed!\n",1);
-            }
-            SlowText.run("your hero has "+player.health+" hp left.\n",1);
-            if(enemy.health <= 0){
-                System.out.println("You have defeated "+enemy.name+"!");
-                player.grabItem(enemy.loot);
-                break;
-            }
-            if(player.health <= 0){
-                System.out.println("You have fallen to "+enemy.name+"...");
-                break;
-            }
-
+            System.out.println(enemy.health);
         }
-        System.out.println(enemy.health);
         return null;
     }
     public static Monster rdmonster(Monster[] monsters, char difficulty, int level) {
