@@ -108,7 +108,7 @@ public class Hero {
         boolean exists = false;
         for (Items i : inventory) {
             if (i.Iname == item) {
-                i = new Items("empty", 1,0,0);
+                i = new Items("empty", 1,0,0, 0);
                 exists = true;
             }
         }

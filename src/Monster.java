@@ -1,4 +1,4 @@
-import java.util.Random
+import java.util.Random;
 
 public class Monster {
     static Items[] snakeL = {Items.bSword, Items.Rock, Items.Fang};
