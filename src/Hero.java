@@ -24,7 +24,7 @@ public class Hero {
     this.constitution = constitution;
     this.intelligence = intelligance;
     this.Maxhealth = health;
-    Items empty = new Items("empty", 0);
+    Items empty = new Items("empty", 5, 0, 0, 2);
 
     inventory = new Items[5];
         inventory[0] = empty;
@@ -108,18 +108,18 @@ public class Hero {
         boolean exists = false;
         for (Items i : inventory) {
             if (i.Iname == item) {
-                i = new Items("empty", 0);
+                i = new Items("empty", 1,0,0);
                 exists = true;
             }
         }
         if (exists == true) {
             switch (item) {
                 case "small health potion":
-                    health = health + 5;
+                    health += 5;
                 case "medium health potion":
-                    health = health + 10;
+                    health += 10;
                 case "large health potion":
-                    health = health + 15;
+                    health += 15;
                 case "exploding javalin":
             }
         }
