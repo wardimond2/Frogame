@@ -48,7 +48,7 @@ public class Hero {
     }
     public void grabItem(Items[] item) throws InterruptedException{
         String area = "swamp";
-        SlowText.run("what item would you like to grab\n");
+        SlowText.run("what item would you like to grab\n", 2);
         for(Items i : item){
             System.out.println(i.Iname);
         }
@@ -65,7 +65,7 @@ public class Hero {
         }
         switch(items) {
             case "iron sword":
-                cItem = Items.iSword;
+                cItem = Items.bSword;
                 break;
             case "javalin":
                 cItem = Items.Javelin;
