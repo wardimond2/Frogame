@@ -86,7 +86,6 @@ public class Main {
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
-            playerInput.nextLine();
             System.out.println("Walk | Battle | Talk | Rest");
             String menue = playerInput.nextLine();
             menue.toLowerCase();
@@ -104,6 +103,7 @@ public class Main {
                     break;
                 case "rest":
                 P1.rest();
+                break;
             }
         }
         Battle(rdmonster(place, 'm', 1), P1);
