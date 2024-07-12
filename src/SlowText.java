@@ -6,7 +6,7 @@ public class SlowText {
         if (style == 1) {
             for (int i = 0; i < prompt.length(); i++) {
                 System.out.print(prompt.charAt(i));
-                TimeUnit.MILLISECONDS.sleep(0);
+                TimeUnit.MILLISECONDS.sleep(20);
             }
         }
         if (style == 2) {

@@ -33,6 +33,7 @@ public class Hero {
     {
         inventory[i] = empty;
     }
+    inventory[3] = potions.tbhpotion;
 
     }
     public void takeDamage(int eWeapon){
@@ -50,10 +51,10 @@ public class Hero {
     public void grabItem(Items[] item) throws InterruptedException{
         SlowText.run("what item would you like to grab\n", 2);
         Random generator = new Random();
-        Items[] items52={Hero.empty,Hero.empty,Hero.empty,Hero.empty };
+        Items[] items52={Hero.empty,Hero.empty,Hero.empty,Hero.empty, Hero.empty};
         int a = 0;
         for(Items i : item){
-            int prob3 = generator.nextInt(1);
+            int prob3 = generator.nextInt(100);
             if (i.prob >= prob3){
                 items52[a] = i;
                 a++;
@@ -122,15 +123,19 @@ public class Hero {
         health = Maxhealth;
         }
     public void UseItem(String item) {
+        System.out.println("test_0");
 
         boolean exists = false;
         for (Items i : inventory) {
+            System.out.println("test_1");
             if (i.Iname == item) {
+                System.out.println("test_2");
                 i = new Items("empty", 1,0,0, 2);
                 exists = true;
             }
         }
         if (exists == true) {
+            System.out.println("test1");
             switch (item) {
                 case "small health potion":
                     health += 5;

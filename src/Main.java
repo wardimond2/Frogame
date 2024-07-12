@@ -238,7 +238,7 @@ public class Main {
         Random generator = new Random();
         encounter = generator.nextInt(monsters.length);
         Monster enemy = monsters[encounter];
-        System.out.println(enemy.name+" attacks!\n");
+        System.out.println(enemy.name+" attacks!\n1: Attack | 2: Inventory");
         return enemy;
     }
 }
