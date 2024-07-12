@@ -1,3 +1,5 @@
+import java.util.Random
+
 public class Monster {
     static Items[] snakeL = {Items.bSword, Items.Rock, Items.Fang};
     static Items[] tigerL = {Items.bSword, Items.Rock, Items.Fang};
@@ -23,7 +25,7 @@ public class Monster {
     static Monster panther = new Monster("Panther", 10,15,10, pantherL);
     static Monster gorrila = new Monster("Gorilla",10,15,10, gorrilaL);
     static Monster slimes = new Monster("Slimes",10,15,10, slimesL);
-    static Monster rats = new Monster("Rats",10,15,10, ratsL);
+    static Monster rats = new Monster("Rats",10,2,10, ratsL);
     static Monster bats = new Monster("Bats",10,15,10,batsL);
     static Monster ants = new Monster("Ants",10,15,10, antsL);
     static Monster cats = new Monster("Cats",10,15,10, catsL);
@@ -52,6 +54,7 @@ public class Monster {
         return name+" "+health+" hp "+attack+" attack "+defense+" defense ";
     }
     public int eAttack(){
+
         return attack;
     }
     public void takeDamage(int weapon){
