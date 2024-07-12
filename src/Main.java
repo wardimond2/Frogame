@@ -86,7 +86,7 @@ public class Main {
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
-            System.out.println("Walk | Battle | Talk | Rest");
+            System.out.println("Walk | Battle | Talk | Rest| Inventory");
             String menue = playerInput.nextLine();
             menue.toLowerCase();
             switch(menue){
@@ -102,8 +102,14 @@ public class Main {
                     SlowText.run(npcDialouge[louge], 1);
                     break;
                 case "rest":
-                P1.rest();
-                break;
+                    P1.rest();
+                    break;
+                case "inventory":
+                    for( Items i: P1.inventory){
+                        System.out.println(i.Iname);
+
+                    }
+
             }
         }
         Battle(rdmonster(place, 'm', 1), P1);
