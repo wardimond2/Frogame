@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) throws InterruptedException{
+        Random generator = new Random();
         // defining areas
         Scanner playerInput = new Scanner(System.in);
         String heroName;
@@ -35,7 +36,7 @@ public class Main {
             }
             else if(Objects.equals(playerclass, "Paladin") || Objects.equals(playerclass, "2"))
             {
-                SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n", 1);
+                SlowText.run("\nPaladin Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Paladin? (y/n):\n", 1);
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Paladin";
                     SlowText.run("Your class is " + heroClass+" ", 1);
@@ -45,7 +46,7 @@ public class Main {
             }
             else if(Objects.equals(playerclass, "Wizard") || Objects.equals(playerclass, "3"))
             {
-                SlowText.run("\nWizard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n", 1);
+                SlowText.run("\nWizard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Wizard? (y/n):\n", 1);
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Wizard";
                     SlowText.run("Your class is " + heroClass+"\n", 1);
@@ -55,7 +56,7 @@ public class Main {
             }
             else if(Objects.equals(playerclass, "Hunter") || Objects.equals(playerclass, "4"))
             {
-                SlowText.run("\nHunter Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n", 1);
+                SlowText.run("\nHunter Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Hunter? (y/n):\n", 1);
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Hunter";
                     //heroClass = "Hunter";
@@ -65,7 +66,7 @@ public class Main {
                 }
             }
             else if(Objects.equals(playerclass, "Bard") || Objects.equals(playerclass, "5")) {
-                SlowText.run("\nBard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Warrior? (y/n):\n", 1);
+                SlowText.run("\nBard Stats:\nStrength:19\nDexterity: 15\nConstitution: 2\nIntelligence: 3\n\nChoose Bard? (y/n):\n", 1);
                 if (Objects.equals(playerInput.nextLine(), "y")) {
                     heroClass = "Bard";
                     SlowText.run("Your class is " + heroClass+"\n", 1);
@@ -79,6 +80,7 @@ public class Main {
         Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
+        SlowText.run("*You wake up leaning against a tree,*",1);
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
@@ -116,47 +118,57 @@ public class Main {
                 System.out.println("You have reached the swamp.  ");
                 break;
             case "forest":
-                System.out.println("youve reached the forest");
+                System.out.println("You have reached the forest.");
                 place = Monster.Forest;
                 break;
             case "jungle":
                 place = Monster.jungle;
-                System.out.println("youve reached the jungle");
+                System.out.println("You have reached the jungle.");
                 break;
             case "castle":
-                System.out.println("you've reached the castle");
+                System.out.println("You have reached the castle.");
                 place = Monster.castle;
                 break;
             case "cave":
-                System.out.println("you've reached the cave");
+                System.out.println("You have reached the cave.");
                 place = Monster.Cave;
                 break;
 
         }
         return place;
     }
-    public static void Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
+    public static Items Battle(Monster enemy, Hero player) throws InterruptedException {// change void later to Items i dont wanna code loot tables
+        Random generator = new Random();
         while(enemy.health >= 0 && player.health >= 0){
             Scanner action = new Scanner(System.in);
             String Caction = action.nextLine();
             switch(Caction){
-                case "inventory":
+                case "inventory","i","inv":
                     for( Items i: player.inventory){
                         System.out.println(i.Iname);
 
                     }
                     break;
                 case "attack":
+
                     enemy.takeDamage(player.hero_attack());
-                    SlowText.run(enemy.name+" has "+Integer.toString(enemy.health)+" hp ", 1);
+                    SlowText.run(enemy.name+" has "+Integer.toString(enemy.health)+" HP left.\n", 1);
                     break;
 
             }
-            player.takeDamage(enemy.eAttack());
-            System.out.println("your hero has "+player.health+" hp left.");
+            int damage;
+            if (player.defense <= enemy.attack + generator.nextInt(20)) {
+                damage = generator.nextInt(enemy.dmg) + 1;
+                player.takeDamage(damage);
+                SlowText.run(enemy.name+" did "+damage+" damage!\n",1);
+            }
+            else {
+                SlowText.run(enemy.name+" missed!\n",1);
+            }
+            SlowText.run("your hero has "+player.health+" hp left.\n",1);
             if(enemy.health <= 0){
                 System.out.println("You have defeated "+enemy.name+"!");
-
+                enemy.loot
                 break;
             }
             if(player.health <= 0){
@@ -166,6 +178,7 @@ public class Main {
 
         }
         System.out.println(enemy.health);
+        return null;
     }
     public static Monster rdmonster(Monster[] monsters, char difficulty, int level) {
         int encounter = 0;
