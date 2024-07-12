@@ -87,7 +87,7 @@ public class Main {
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
-            SlowText.run("1: Travel | 2: Battle | 3: Talk | 4: Inventory\n",1);
+            SlowText.run("1: Travel | 2: Battle | 3: Talk | 4: Inventory| 5 Rest\n",1);
             String menue = playerInput.nextLine();
             menue.toLowerCase();
             switch(menue){
@@ -154,6 +154,7 @@ public class Main {
         System.out.println("which weapon would to attack with");
         Weapons useWeapon = Items.Stick;
         String weapon42 = action2.nextLine();
+        weapon42.toLowerCase();
         switch(weapon42) {
             case "iron sword":
                 useWeapon = Items.bSword;
@@ -182,6 +183,7 @@ public class Main {
         }
                 while (enemy.health >= 0 && player.health >= 0) {
             Scanner action = new Scanner(System.in);
+            System.out.println("attack|inventory");
             String Caction = action.nextLine();
             switch (Caction) {
                 case "inventory", "i", "inv":
@@ -221,6 +223,7 @@ public class Main {
                         System.out.println("You have fallen to " + enemy.name + "...");
                         break;
                     }
+                    break;
             }
         }
         return null;

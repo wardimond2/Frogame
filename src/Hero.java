@@ -73,7 +73,7 @@ public class Hero {
             }
         }
         switch(items) {
-            case "iron sword":
+            case "broad sword":
                 cItem = Items.bSword;
                 break;
             case "javalin":
