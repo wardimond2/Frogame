@@ -18,6 +18,7 @@ public class Main {
         int heroAC;
         int heroArcana;
         // game start - init
+        SlowText.run("*You wake up amongst the rubble of your once standing home, now felled by the King Serpent.*",2);
         SlowText.run("What is your hero's name?\n", 1);
         heroName = playerInput.nextLine();
         Hero P1 = new Hero(heroName, 19, 20, 15, 19, 15, 2, 3, 20);
@@ -81,12 +82,12 @@ public class Main {
         Monster[] place = Monster.swamp;
         String land = "";
         Scanner walk = new Scanner(System.in);
-        SlowText.run("*You wake up leaning against a tree,*",1);
+        SlowText.run("*You wake up leaning against a tree,*\n",1);
         P1.hero_upgrade(Items.Stick.power);
         boolean run = true;
         // GAME fOR REAL THIS TIME
         while(run == true){
-            System.out.println("Walk | Battle | Talk | Rest| Inventory");
+            SlowText.run("Walk | Battle | Talk | Rest| Inventory\n",1);
             String menue = playerInput.nextLine();
             menue.toLowerCase();
             switch(menue){

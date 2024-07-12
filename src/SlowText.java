@@ -12,11 +12,7 @@ public class SlowText {
         if (style == 2) {
             for (int i = 0; i < prompt.length(); i++) {
                 System.out.print(prompt.charAt(i));
-                TimeUnit.MILLISECONDS.sleep(20);
-            }
-            for (int i = 0; i < prompt.length(); i++) {
-                System.out.print("\b");
-                TimeUnit.MILLISECONDS.sleep(20);
+                TimeUnit.MILLISECONDS.sleep(50);
             }
         }
     }
