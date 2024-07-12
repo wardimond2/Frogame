@@ -117,27 +117,27 @@ public class Main {
     public static Monster[] walking()throws InterruptedException{
         Scanner walk = new Scanner(System.in);
         String area = "";
-        SlowText.run("Where would you like to go?\n", 1);
+        SlowText.run("Where would you like to go?\n1: Swamp | 2: Forest | 3: Jungle | 4: Castle | 5: Cave\n", 1);
         area = walk.nextLine();
         Monster[] place = Monster.swamp;
         switch (area){
-            case "swamp":
+            case "swamp", "1", "s":
                 place = Monster.swamp;
                 SlowText.run("You have reached the swamp.\n",1);
                 break;
-            case "forest":
+            case "forest", "2", "f":
                 SlowText.run("You have reached the forest.\n",1);
                 place = Monster.Forest;
                 break;
-            case "jungle":
+            case "jungle", "3", "j":
                 place = Monster.jungle;
                 SlowText.run("You have reached the jungle.\n",1);
                 break;
-            case "castle":
+            case "castle", "4", "cas":
                 SlowText.run("You have reached the castle.\n",1);
                 place = Monster.castle;
                 break;
-            case "cave":
+            case "cave", "5", "cav":
                 SlowText.run("You have reached the cave.\n",1);
                 place = Monster.Cave;
                 break;
@@ -151,7 +151,7 @@ public class Main {
             System.out.println(i.Iname);
 
         }
-        System.out.println("which weapon would to attack with");
+        SlowText.run("Which weapon would you like to attack with?",1);
         Weapons useWeapon = Items.Stick;
         String weapon42 = action2.nextLine();
         weapon42.toLowerCase();
@@ -183,10 +183,10 @@ public class Main {
         }
                 while (enemy.health >= 0 && player.health >= 0) {
             Scanner action = new Scanner(System.in);
-            System.out.println("attack|inventory");
+            System.out.println("1: Attack | 2: Inventory");
             String Caction = action.nextLine();
             switch (Caction) {
-                case "inventory", "i", "inv":
+                case "inventory", "i", "inv", "2":
                     for (Items i : player.inventory) {
                         System.out.println(i.Iname);
 
@@ -194,11 +194,11 @@ public class Main {
                     String items45 = action.nextLine();
                     player.UseItem(items45);
                     break;
-                case "attack":
+                case "attack", "a", "1":
 
                     int damage;
                     if (enemy.defense <= player.hero_attack(useWeapon) + generator.nextInt(20)) {
-                        damage = generator.nextInt(player.inventory[1].dmg) + 1;
+                        damage = generator.nextInt(useWeapon.dmg) + 1;
                         enemy.takeDamage(damage);
                         SlowText.run("You did " + damage + " damage!\n", 1);
                     }
@@ -215,12 +215,12 @@ public class Main {
                     SlowText.run("your hero has " + player.health + " hp left.\n", 1);
                     SlowText.run(enemy.name+" has " + enemy.health + " hp left.\n", 1);
                     if (enemy.health <= 0) {
-                        System.out.println("You have defeated " + enemy.name + "!");
+                        System.out.println("You have defeated " + enemy.name + "!\n");
                         player.grabItem(enemy.loot);
                         break;
                     }
                     if (player.health <= 0) {
-                        System.out.println("You have fallen to " + enemy.name + "...");
+                        System.out.println("You have fallen to " + enemy.name + "...\n");
                         break;
                     }
                     break;
@@ -233,7 +233,7 @@ public class Main {
         Random generator = new Random();
         encounter = generator.nextInt(monsters.length);
         Monster enemy = monsters[encounter];
-        System.out.println(enemy.name+" attacks!");
+        System.out.println(enemy.name+" attacks!\n");
         return enemy;
     }
 }

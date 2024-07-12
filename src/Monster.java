@@ -1,20 +1,20 @@
 import java.util.Random;
 
 public class Monster {
-    static Items[] snakeL = {Items.bSword, Items.Rock, Items.Fang};
-    static Items[] tigerL = {Items.bSword, Items.Rock, Items.Fang};
-    static Items[] buffafaloL = {Items.bSword, Items.Rock};
-    static Items[] elefalantL = {Items.bSword, Items.Rock};
-    static Items[] chickenL = {Items.bSword, Items.Rock};
-    static Items[] entsL = {Items.bSword, Items.Stick, Items.Spear, Items.Javelin};
-    static Items[] crocodileL = {Items.Rock, Items.Stick, Items.pFrog, Items.Fang};
-    static Items[] pantherL = {Items.bSword, Items.Rock, Items.Fang};
-    static Items[] gorrilaL = {Items.bSword, Items.Rock};
-    static Items[] slimesL = {Items.bSword, Items.Rock, Items.pFrog};
-    static Items[] ratsL = {Items.Stick, Items.Rock};
-    static Items[] batsL = {Items.bBat, Items.Rock};
-    static Items[] antsL = {Items.bSword, Items.Rock};
-    static Items[] catsL = {Items.bSword, Items.Rock};
+    static Items[] snakeL = {Items.bSword, Items.Rock, Items.Fang, potions.sshpotion, potions.smhpotion};
+    static Items[] tigerL = {Items.bSword, Items.Rock, Items.Fang, potions.smhpotion};
+    static Items[] buffafaloL = {Items.bSword, Items.Rock, potions.smhpotion, potions.tbhpotion};
+    static Items[] elefalantL = {Items.bSword, Items.Rock, potions.tbhpotion};
+    static Items[] chickenL = {Items.bSword, Items.Rock, potions.sshpotion};
+    static Items[] entsL = {Items.bSword, Items.Stick, Items.Spear, Items.Javelin, potions.tbhpotion};
+    static Items[] crocodileL = {Items.Rock, Items.Stick, Items.pFrog, Items.Fang, potions.smhpotion};
+    static Items[] pantherL = {Items.bSword, Items.Rock, Items.Fang, potions.smhpotion, potions.tbhpotion};
+    static Items[] gorrilaL = {Items.bSword, Items.Rock, potions.smhpotion, potions.tbhpotion};
+    static Items[] slimesL = {Items.bSword, Items.Rock, Items.pFrog, potions.smhpotion};
+    static Items[] ratsL = {Items.Stick, Items.Rock, potions.sshpotion};
+    static Items[] batsL = {Items.bBat, Items.Rock, potions.sshpotion};
+    static Items[] antsL = {Items.bSword, Items.Rock, potions.sshpotion};
+    static Items[] catsL = {Items.bSword, Items.Rock, potions.sshpotion};
     static Monster snake = new Monster("Snake", 10, 5, 6,  10, snakeL);
     static Monster tiger = new Monster("Tiger", 10, 6, 6,  10, tigerL);
     static Monster buffafalo = new Monster("Buffalo", 10,5, 6, 10, buffafaloL);
