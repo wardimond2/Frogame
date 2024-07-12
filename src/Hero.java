@@ -34,6 +34,7 @@ public class Hero {
         inventory[i] = empty;
     }
 
+
     }
     public void takeDamage(int eWeapon){
         health -= eWeapon;
@@ -50,10 +51,10 @@ public class Hero {
     public void grabItem(Items[] item) throws InterruptedException{
         SlowText.run("what item would you like to grab\n", 2);
         Random generator = new Random();
-        Items[] items52={Hero.empty,Hero.empty,Hero.empty,Hero.empty };
+        Items[] items52={Hero.empty,Hero.empty,Hero.empty,Hero.empty,Hero.empty };
         int a = 0;
         for(Items i : item){
-            int prob3 = generator.nextInt(1);
+            int prob3 = generator.nextInt(100);
             if (i.prob >= prob3){
                 items52[a] = i;
                 a++;
@@ -125,7 +126,9 @@ public class Hero {
 
         boolean exists = false;
         for (Items i : inventory) {
+
             if (i.Iname == item) {
+
                 i = new Items("empty", 1,0,0, 2);
                 exists = true;
             }
