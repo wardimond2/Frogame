@@ -168,7 +168,7 @@ public class Main {
             SlowText.run("your hero has "+player.health+" hp left.\n",1);
             if(enemy.health <= 0){
                 System.out.println("You have defeated "+enemy.name+"!");
-                enemy.loot
+
                 break;
             }
             if(player.health <= 0){
