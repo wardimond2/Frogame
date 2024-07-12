@@ -83,7 +83,7 @@ public class Main {
         // GAME fOR REAL THIS TIME
         while(run == true){
             playerInput.nextLine();
-            System.out.println("walk, battle, talk, rest");
+            System.out.println("Walk | Battle | Talk | Rest");
             String menue = playerInput.nextLine();
             switch(menue){
                 case "walk":
@@ -100,7 +100,6 @@ public class Main {
                 case "rest":
                 P1.rest();
             }
-            System.out.println("");
             place = walking();
         }
         Battle(rdmonster(place, 'm', 1), P1);
@@ -108,14 +107,13 @@ public class Main {
     public static Monster[] walking()throws InterruptedException{
         Scanner walk = new Scanner(System.in);
         String area = "";
-        SlowText.run("where would you like to go\n", 1);
-        System.out.print("");
+        SlowText.run("Where would you like to go?\n", 1);
         area = walk.nextLine();
         Monster[] place = Monster.swamp;
         switch (area){
-            case "savanna":
+            case "swamp":
                 place = Monster.swamp;
-                System.out.println("youve reached the swamp");
+                System.out.println("You have reached the swamp.  ");
                 break;
             case "forest":
                 System.out.println("youve reached the forest");
