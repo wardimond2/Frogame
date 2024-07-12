@@ -151,7 +151,7 @@ public class Main {
             System.out.println(i.Iname);
 
         }
-        SlowText.run("Which weapon would you like to attack with?",1);
+        SlowText.run("Which weapon would you like to attack with?\n",1);
         Weapons useWeapon = Items.Stick;
         String weapon42 = action2.nextLine();
         weapon42.toLowerCase();
@@ -203,7 +203,7 @@ public class Main {
                         SlowText.run("You did " + damage + " damage!\n", 1);
                     }
                     else{
-                        SlowText.run("You missed!",1);
+                        SlowText.run("You missed!\n",1);
                     }
                     if (player.defense <= enemy.attack + generator.nextInt(20)) {
                         damage = generator.nextInt(enemy.dmg) + 1;
